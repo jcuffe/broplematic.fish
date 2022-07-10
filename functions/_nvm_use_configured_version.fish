@@ -5,16 +5,21 @@ function _nvm_use_configured_version
     echo using configured version
     # Check in CWD
     if test -e .nvmrc
+        echo cwd found
         set -f nvmrc_path .nvmrc
     end
 
+    echo checking git root
     # Check at git root
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1
         and set -l git_root (git rev-parse --show-toplevel >/dev/null 2>&1)
         and test -e $git_root/.nvmrc
 
+        echo git root found
         set -f nvmrc_path $git_root/.nvmrc
     end
+
+    echo path $nvmrc_path
 
     # Do nothing if not found
     if not set -q nvmrc_path
