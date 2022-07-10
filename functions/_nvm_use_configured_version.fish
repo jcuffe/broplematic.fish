@@ -6,6 +6,7 @@ function _nvm_use_configured_version
     # Check in CWD
     if test -e .nvmrc
         echo cwd found
+        cat .nvmrc
         set -f nvmrc_path .nvmrc
     end
 
@@ -15,7 +16,8 @@ function _nvm_use_configured_version
         and set -l git_root (git rev-parse --show-toplevel >/dev/null 2>&1)
         and test -e $git_root/.nvmrc
 
-        echo git root found
+        echo git root found $git_root
+        cat $git_root/.nvmrc
         set -f nvmrc_path $git_root/.nvmrc
     end
 
