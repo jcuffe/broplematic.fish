@@ -13,11 +13,11 @@ function _nvm_use_configured_version
     echo checking git root
     # Check at git root
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1
-        && set -f git_root (git rev-parse --show-toplevel >/dev/null 2>&1)
-        && test -e $git_root/.nvmrc
+        and set -f git_root (git rev-parse --show-toplevel >/dev/null 2>&1)
+        and test -e $git_root/.nvmrc
 
-        echo git root found $git_root
-        cat $git_root/.nvmrc
+        echo $git_root
+        echo git root found
         set -f nvmrc_path $git_root/.nvmrc
     end
 
